@@ -221,7 +221,7 @@ curl -sk $BASE/api/tasks/ -H "Authorization: Bearer $TOKEN"
 
 โฟลเดอร์ `screenshots/` ของกลุ่มนี้ประกอบด้วยภาพดังต่อไปนี้
 
-- ``
+- `01_docker_running.png`
 - `02_https_browser.png`
 - `03_login_success.png`
 - `04_login_fail.png`
