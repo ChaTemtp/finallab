@@ -11,7 +11,6 @@
 รับผิดชอบการพัฒนา **Full-stack** ของระบบทั้งหมด ประกอบด้วย:
 1. **Backend:** พัฒนา 3 Microservices (Auth, Task, Log) ด้วย Node.js
 2. **Frontend:** พัฒนาหน้าเว็บส่วนติดต่อผู้ใช้ (User Interface)
-3. **Infrastructure:** จัดการระบบ Docker Compose และการตั้งค่า Nginx API Gateway
 
 ---
 
