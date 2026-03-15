@@ -15,9 +15,7 @@
 ---
 
 ## สิ่งที่ได้ดำเนินการด้วยตนเอง
-* **เขียน Routes และ Middleware:** พัฒนา API สำหรับจัดการข้อมูล Task และระบบ Login ทั้งหมด
-* **ระบบความปลอดภัย (RBAC):** ออกแบบระบบ Role-based Access Control โดยใช้ **JWT** เพื่อแยกสิทธิ์การใช้งานระหว่าง Admin และ Member อย่างชัดเจน
-* **การตั้งค่า Reverse Proxy:** คอนฟิก **Nginx** ให้รองรับ HTTPS (SSL Termination) และจัดการระบบ **Rate Limiting** เพื่อป้องกันการยิง Request ที่ถี่เกินไป
+* **เขียน Routes และ Middleware:** พัฒนา API  สำหรับจัดการข้อมูล Task และระบบ Login ทั้งหมด
 * **Container Management:** เชื่อมต่อ Database PostgreSQL เข้ากับทุก Service และเขียนระบบ **Healthcheck** ใน Docker เพื่อควบคุมลำดับการรันของ Container
 * **Frontend Integration:** พัฒนาหน้าเว็บให้เชื่อมต่อกับ API Gateway พร้อมระบบจัดเก็บและตรวจสอบ Token สำหรับคงสถานะการ Login
 
