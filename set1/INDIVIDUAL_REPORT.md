@@ -1,4 +1,4 @@
-# INDIVIDUAL REPORT
+# INDIVIDUAL REPORT TAIPHOB
 
 ## ข้อมูลผู้จัดทำ
 * **ชื่อ-นามสกุล:** ไตรภพ ก๋องใจ
