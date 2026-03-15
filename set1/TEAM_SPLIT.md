@@ -15,8 +15,7 @@
 ### **สมาชิกคนที่ 1: ไตรภพ ก๋องใจ**
 รับผิดชอบงานหลักดังต่อไปนี้:
 * **Backend Development:** พัฒนา `auth-service`, `task-service` และ `log-service`
-* **Infrastructure & Security:** คอนฟิก Docker Compose, ตั้งค่า Nginx Gateway (Reverse Proxy), และจัดการระบบ JWT Authentication
-* **Database Management:** ออกแบบ Schema และเชื่อมต่อ PostgreSQL สำหรับทุก Service
+* **Frontend** พัฒนาหน้าเว็บส่วนติดต่อผู้ใช้ (User Interface)
 
 ### **สมาชิกคนที่ 2: นายนัฐพงศ์  รอดอินทร์**
 รับผิดชอบงานหลักดังต่อไปนี้:
