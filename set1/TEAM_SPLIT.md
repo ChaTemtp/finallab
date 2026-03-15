@@ -14,7 +14,7 @@
 
 ### **สมาชิกคนที่ 1: ไตรภพ ก๋องใจ**
 รับผิดชอบงานหลักดังต่อไปนี้:
-* **Backend Development:** พัฒนา `auth-service`, `task-service` และ `log-service` โดยใช้ Node.js
+* **Backend Development:** พัฒนา `auth-service`, `task-service` และ `log-service`
 * **Infrastructure & Security:** คอนฟิก Docker Compose, ตั้งค่า Nginx Gateway (Reverse Proxy), และจัดการระบบ JWT Authentication
 * **Database Management:** ออกแบบ Schema และเชื่อมต่อ PostgreSQL สำหรับทุก Service
 
