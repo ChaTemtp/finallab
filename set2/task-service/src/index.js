@@ -1,33 +1,36 @@
 require('dotenv').config();
 const express = require('express');
 const cors    = require('cors');
-const morgan  = require('morgan');
-const { initDB } = require('./db/db');
-const taskRoutes = require('./routes/tasks');
+const { Pool } = require('pg');
 
 const app  = express();
-const PORT = process.env.PORT || 3002;
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 app.use(cors());
 app.use(express.json());
-app.use(morgan('combined', {
-  stream: { write: (msg) => console.log(msg.trim()) }
-}));
 
-app.use('/api/tasks', taskRoutes);
-app.use((req, res) => res.status(404).json({ error: 'Route not found' }));
-
-async function start() {
-  let retries = 10;
-  while (retries > 0) {
-    try { await initDB(); break; }
-    catch (err) {
-      console.log(`[task-service] Waiting for DB... (${retries} retries left)`);
-      retries--;
-      await new Promise(r => setTimeout(r, 3000));
+// API: ดึงงานทั้งหมด
+app.get('/api/tasks', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM tasks ORDER BY created_at DESC');
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-  }
-  app.listen(PORT, () => console.log(`[task-service] Running on port ${PORT}`));
-}
+});
 
-start();
+// API: เพิ่มงานใหม่ (ต้องระบุ status ให้ตรงกับ CHECK constraint: TODO, IN_PROGRESS, DONE)
+app.post('/api/tasks', async (req, res) => {
+    const { user_id, title, description, status, priority } = req.body;
+    try {
+        const result = await pool.query(
+            'INSERT INTO tasks (user_id, title, description, status, priority) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [user_id, title, description, status || 'TODO', priority || 'medium']
+        );
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
+app.listen(3002, () => console.log('Task Service running on port 3002'));
