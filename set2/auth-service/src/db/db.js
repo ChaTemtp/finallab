@@ -1,11 +1,8 @@
 const { Pool } = require('pg');
 
+// ใช้ DATABASE_URL ตัวเดียวจบ เพราะเราตั้งค่าไว้ใน docker-compose แล้ว
 const pool = new Pool({
-  host: process.env.DB_HOST || 'postgres',
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD
+  connectionString: process.env.DATABASE_URL
 });
 
 pool.on('connect', () => {
@@ -16,4 +13,17 @@ pool.on('error', (err) => {
   console.error('Postgres connection error:', err);
 });
 
-module.exports = { pool };
+// สร้างฟังก์ชันชื่อ initDB ตามที่ index.js เรียกหา
+const initDB = async () => {
+  const client = await pool.connect();
+  try {
+    // ลอง query สั้นๆ เพื่อเช็กว่าติดต่อได้จริงไหม
+    await client.query('SELECT NOW()');
+    console.log('Database connection verified successfully');
+  } finally {
+    client.release();
+  }
+};
+
+// ส่งออกแบบตัวเดียวเพียวๆ (Default Export) เพื่อให้ require('./db/db') ทำงานได้
+module.exports = initDB;
